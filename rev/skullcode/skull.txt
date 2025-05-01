@@ -1,0 +1,471 @@
+
+4400:00058A09: mov.32 rCode = 0x00000000
+4408:00038A09: mov.32 rText = 0x00000050
+4410:02008209: mov.32 [rParam] = rParam
+4414:0000820D: add.32 [rParam] += 0x00010000
+441C:00060A09: mov.32 rCall = [rParam]
+4420:01008008: mode 0x01
+4424:0000820B: jmp.al -> 0x00004B74
+
+442C:01048213: shl.32 [rParam+0x4] <<= 0x01
+4430:0008821A: mul.32 [rParam+0x8] *= 0x000000A0
+4438:0408020D: add.32 [rParam+0x8] += [rParam+0x4]
+443C:080C8213: shl.32 [rParam+0xC] <<= 0x08
+4440:000C0009: mov.8 [rParam+0xC] = [rParam]
+4444:0C083909: mov.16 [rText+[rParam+0x8]] = [rParam+0xC]
+ret_gadget:
+4448:00000020: ret
+
+444C:00107009: mov.8 [rParam+0x10] = [[rParam]]
+4450:0010800A: cmp.8 [rParam+0x10], 0x00
+4454:0004820B: jmp.eq -> ret_gadget
+445C:04140209: mov.32 [rParam+0x14] = [rParam+0x4]
+4460:08180209: mov.32 [rParam+0x18] = [rParam+0x8]
+4464:0C1C0209: mov.32 [rParam+0x1C] = [rParam+0xC]
+4468:0004821F: call -> [0x10] 0x0000442C
+4470:0000820D: add.32 [rParam] += 0x00000001
+4478:0004820D: add.32 [rParam+0x4] += 0x00000001
+4480:0000820B: jmp.al -> 0x0000444C
+
+4488:00008209: mov.32 [rParam] = 0x00000040
+4490:00047209: mov.32 [rParam+0x4] = [[rParam]]
+4494:00048212: or.32 [rParam+0x4] |= 0x20000000
+449C:04007A09: mov.32 [[rParam]] = [rParam+0x4]
+44A0:00000020: ret
+
+44A4:00008209: mov.32 [rParam] = 0x00004BE0
+44AC:00048209: mov.32 [rParam+0x4] = 0x0000001C
+44B4:00088209: mov.32 [rParam+0x8] = 0x00000009
+44BC:000C8209: mov.32 [rParam+0xC] = 0x0000000F
+44C4:0000821F: call -> [0x0] 0x0000444C
+44CC:00008209: mov.32 [rParam] = 0x00004C28
+44D4:00048209: mov.32 [rParam+0x4] = 0x0000001C
+44DC:00088209: mov.32 [rParam+0x8] = 0x0000000F
+44E4:000C8209: mov.32 [rParam+0xC] = 0x0000000F
+44EC:0000821F: call -> [0x0] 0x0000444C
+44F4:0000820B: jmp.al -> 0x00004488
+
+44FC:00008209: mov.32 [rParam] = 0x00004BF0
+4504:00048209: mov.32 [rParam+0x4] = 0x0000001C
+450C:00088209: mov.32 [rParam+0x8] = 0x0000000B
+4514:000C8209: mov.32 [rParam+0xC] = global_status_1
+451C:0C0C7209: mov.32 [rParam+0xC] = [[rParam+0xC]]
+4520:0000821F: call -> [0x0] 0x0000444C
+4528:00008209: mov.32 [rParam] = 0x00004C0C
+4530:00048209: mov.32 [rParam+0x4] = 0x0000001C
+4538:00088209: mov.32 [rParam+0x8] = 0x0000000D
+4540:000C8209: mov.32 [rParam+0xC] = global_status_1
+4548:0C0C7209: mov.32 [rParam+0xC] = [[rParam+0xC]]
+454C:0000821F: call -> [0x0] 0x0000444C
+4554:00008209: mov.32 [rParam] = 0x000000B3
+455C:00048209: mov.32 [rParam+0x4] = 0x0000001C
+4564:00088209: mov.32 [rParam+0x8] = 0x0000000C
+456C:000C8209: mov.32 [rParam+0xC] = global_status_1
+4574:0C0C7209: mov.32 [rParam+0xC] = [[rParam+0xC]]
+4578:0000821F: call -> [0x0] 0x0000442C
+4580:00008209: mov.32 [rParam] = 0x000000B3
+4588:00048209: mov.32 [rParam+0x4] = 0x00000033
+4590:00088209: mov.32 [rParam+0x8] = 0x0000000C
+4598:000C8209: mov.32 [rParam+0xC] = global_status_1
+45A0:0C0C7209: mov.32 [rParam+0xC] = [[rParam+0xC]]
+45A4:0000821F: call -> [0x0] 0x0000442C
+45AC:00008209: mov.32 [rParam] = global_input_text
+45B4:00048209: mov.32 [rParam+0x4] = 0x0000001D
+45BC:00088209: mov.32 [rParam+0x8] = 0x0000000C
+45C4:000C8209: mov.32 [rParam+0xC] = global_status_1
+45CC:0C0C7209: mov.32 [rParam+0xC] = [[rParam+0xC]]
+45D0:0000821F: call -> [0x0] 0x0000444C
+45D8:00008209: mov.32 [rParam] = global_input_length
+45E0:0000FA0A: cmp.32 [[rParam]], 0x00000016
+45E8:0004820B: jmp.eq -> 0x00004620
+45F0:00048209: mov.32 [rParam+0x4] = 0x0000001D
+45F8:0004720D: add.32 [rParam+0x4] += [[rParam]]
+45FC:00008209: mov.32 [rParam] = 0x00000020
+4604:00088209: mov.32 [rParam+0x8] = 0x0000000C
+460C:000C8209: mov.32 [rParam+0xC] = global_status_1
+4614:0C0C7209: mov.32 [rParam+0xC] = [[rParam+0xC]]
+4618:0000821F: call -> [0x0] 0x0000442C
+4620:00008209: mov.32 [rParam] = global_status_2
+4628:00007209: mov.32 [rParam] = [[rParam]]
+462C:00048209: mov.32 [rParam+0x4] = 0x00000035
+4634:00088209: mov.32 [rParam+0x8] = 0x0000000C
+463C:000C8209: mov.32 [rParam+0xC] = global_status_1
+4644:0C0C7209: mov.32 [rParam+0xC] = [[rParam+0xC]]
+4648:0000821F: call -> [0x0] 0x0000442C
+4650:0000820B: jmp.al -> 0x00004488
+
+4658:00008209: mov.32 [rParam] = global_status_1
+4660:0000FA09: mov.32 [[rParam]] = 0x0000000F
+4668:00008209: mov.32 [rParam] = global_status_2
+4670:0000FA09: mov.32 [[rParam]] = 0x00000020
+4678:00008209: mov.32 [rParam] = 0x00000046
+4680:0000F909: mov.16 [[rParam]] = 0x000C
+4688:00000020: ret
+
+verify_flag:
+468C:00008209: mov.32 [rParam] = global_input_length
+4694:0000FA0A: cmp.32 [[rParam]], 0x00000016
+469C:0018820B: jmp.ne -> clear_rparam
+step_1:
+46A4:00008209: mov.32 [rParam] = global_input_text
+46AC:00048209: mov.32 [rParam+0x4] = step_1_result
+46B4:00087409: mov.128 [rParam+0x8] = [[rParam]]
+46B8:00088410: xor.128 [rParam+0x8] ^= 0x490F045419233B076257352421335364
+46CC:08047C09: mov.128 [[rParam+0x4]] = [rParam+0x8]
+46D0:0000820D: add.32 [rParam] += 0x00000010
+46D8:0004820D: add.32 [rParam+0x4] += 0x00000010
+46E0:00087309: mov.64 [rParam+0x8] = [[rParam]]
+46E4:00088310: xor.64 [rParam+0x8] ^= 0x0000543F1F546374
+46F0:08047B09: mov.64 [[rParam+0x4]] = [rParam+0x8]
+step_2:
+46F4:00008209: mov.32 [rParam] = step_1_result
+46FC:00048209: mov.32 [rParam+0x4] = static_bit_map_processing_data
+4704:00088209: mov.32 [rParam+0x8] = computational_memory_start
+470C:0C0C0210: xor.32 [rParam+0xC] ^= [rParam+0xC]
+4710:000E7009: mov.8 [rParam+0xE] = [[rParam]]
+4714:040F7009: mov.8 [rParam+0xF] = [[rParam+0x4]]
+step_2_loop:
+4718:0F100009: mov.8 [rParam+0x10] = [rParam+0xF]
+471C:03108011: and.8 [rParam+0x10] &= 0x03
+4720:0210800A: cmp.8 [rParam+0x10], 0x02
+4724:0018820B: jmp.ne -> step_2_loop_process_bit_map
+472C:0E100009: mov.8 [rParam+0x10] = [rParam+0xE]
+4730:010E8015: shr.8 [rParam+0xE] >>>= 0x01
+4734:010C800D: add.8 [rParam+0xC] += 0x01
+4738:070C800A: cmp.8 [rParam+0xC], 0x07
+473C:0018820B: jmp.ne -> step_2_loop_process_bit_map
+4744:0000820D: add.32 [rParam] += 0x00000001
+474C:000E7009: mov.8 [rParam+0xE] = [[rParam]]
+4750:000C8009: mov.8 [rParam+0xC] = 0x00
+step_2_loop_process_bit_map:
+4754:01108011: and.8 [rParam+0x10] &= 0x01
+4758:10087809: mov.8 [[rParam+0x8]] = [rParam+0x10]
+475C:0008820D: add.32 [rParam+0x8] += 0x00000001
+4764:0008820A: cmp.32 [rParam+0x8], computational_memory_end
+476C:0004820B: jmp.eq -> step_3
+step_2_loop_shift_comparator:
+4774:020F8015: shr.8 [rParam+0xF] >>>= 0x02
+4778:010D800D: add.8 [rParam+0xD] += 0x01
+477C:040D800A: cmp.8 [rParam+0xD], 0x04
+4780:0018820B: jmp.ne -> step_2_loop
+step_2_loop_next_comparator:
+4788:0004820D: add.32 [rParam+0x4] += 0x00000001
+4790:040F7009: mov.8 [rParam+0xF] = [[rParam+0x4]]
+4794:000D8009: mov.8 [rParam+0xD] = 0x00
+4798:0000820B: jmp.al -> step_2_loop
+
+step_3:
+47A0:00048209: mov.32 [rParam+0x4] = 0x00000001
+47A8:00088209: mov.32 [rParam+0x8] = 0x0000000E
+47B0:0001821F: call -> [0x4] mystery_flag_method_1
+47B8:04000209: mov.32 [rParam] = [rParam+0x4]
+47BC:00048209: mov.32 [rParam+0x4] = 0x00000001
+47C4:00088209: mov.32 [rParam+0x8] = 0x0000000E
+47CC:0001821F: call -> [0x4] mystery_flag_method_2
+47D4:04000211: and.32 [rParam] &= [rParam+0x4]
+47D8:00048209: mov.32 [rParam+0x4] = 0x0000000E
+47E0:00088209: mov.32 [rParam+0x8] = 0x00000001
+47E8:0001821F: call -> [0x4] mystery_flag_method_1
+47F0:04000211: and.32 [rParam] &= [rParam+0x4]
+47F4:00048209: mov.32 [rParam+0x4] = 0x0000000E
+47FC:00088209: mov.32 [rParam+0x8] = 0x00000001
+4804:0001821F: call -> [0x4] mystery_flag_method_2
+480C:04000211: and.32 [rParam] &= [rParam+0x4]
+4810:00000020: ret
+
+mystery_flag_method_2:
+4814:08080210: xor.32 [rParam+0x8] ^= [rParam+0x8]
+4818:000C8209: mov.32 [rParam+0xC] = computational_memory_start
+4820:00108209: mov.32 [rParam+0x10] = computational_memory_end
+mystery_2_outer_loop:
+4828:0C140209: mov.32 [rParam+0x14] = [rParam+0xC]
+482C:18180210: xor.32 [rParam+0x18] ^= [rParam+0x18]
+4830:1C1C0210: xor.32 [rParam+0x1C] ^= [rParam+0x1C]
+mystery_2_inner_loop_1:
+4834:01188213: shl.32 [rParam+0x18] <<= 0x01
+4838:14187012: or.8 [rParam+0x18] |= [[rParam+0x14]]
+483C:0014020D: add.32 [rParam+0x14] += [rParam]
+4840:001C820D: add.32 [rParam+0x1C] += 0x00000001
+4848:001C820A: cmp.32 [rParam+0x1C], 0x0000000E
+4850:0018820B: jmp.ne -> mystery_2_inner_loop_1
+4858:00148209: mov.32 [rParam+0x14] = computational_memory_end
+mystery_2_inner_loop_2:
+4860:1014020A: cmp.32 [rParam+0x14], [rParam+0x10]
+4864:0004820B: jmp.eq -> myster_2_inner_loop_2_break
+486C:141C7109: mov.16 [rParam+0x1C] = [[rParam+0x14]]
+4870:181C010A: cmp.16 [rParam+0x1C], [rParam+0x18]
+4874:0004820B: jmp.eq -> clear_rparam
+487C:0014820D: add.32 [rParam+0x14] += 0x00000002
+4884:0000820B: jmp.al -> mystery_2_inner_loop_2
+
+myster_2_inner_loop_2_break:
+488C:18107909: mov.16 [[rParam+0x10]] = [rParam+0x18]
+4890:0010820D: add.32 [rParam+0x10] += 0x00000002
+4898:040C020D: add.32 [rParam+0xC] += [rParam+0x4]
+489C:0108800D: add.8 [rParam+0x8] += 0x01
+48A0:0E08800A: cmp.8 [rParam+0x8], 0x0E
+48A4:0018820B: jmp.ne -> mystery_2_outer_loop
+48AC:00008209: mov.32 [rParam] = 0x00000001
+48B4:00000020: ret
+
+mystery_flag_method_1:
+48B8:08080210: xor.32 [rParam+0x8] ^= [rParam+0x8]
+48BC:000C8209: mov.32 [rParam+0xC] = computational_memory_start
+mystery_1_outer_loop:
+48C4:0C100209: mov.32 [rParam+0x10] = [rParam+0xC]
+48C8:00148209: mov.32 [rParam+0x14] = 0xFF000000
+mystery_1_inner_loop:
+48D0:10187009: mov.8 [rParam+0x18] = [[rParam+0x10]]
+48D4:0010020D: add.32 [rParam+0x10] += [rParam]
+48D8:1817000A: cmp.8 [rParam+0x17], [rParam+0x18]
+48DC:0004820B: jmp.eq -> mystery_1_increase_same_ctr
+48E4:00168009: mov.8 [rParam+0x16] = 0x00
+48E8:18170009: mov.8 [rParam+0x17] = [rParam+0x18]
+mystery_1_increase_same_ctr:
+48EC:0116800D: add.8 [rParam+0x16] += 0x01
+48F0:0316800A: cmp.8 [rParam+0x16], 0x03
+48F4:0004820B: jmp.eq -> clear_rparam
+48FC:0018800A: cmp.8 [rParam+0x18], 0x00
+4900:0018820B: jmp.ne -> mystery_1_increase_inner_ctr
+4908:0115800D: add.8 [rParam+0x15] += 0x01
+mystery_1_increase_inner_ctr:
+490C:0114800D: add.8 [rParam+0x14] += 0x01
+4910:0E14800A: cmp.8 [rParam+0x14], 0x0E
+4914:0018820B: jmp.ne -> mystery_1_inner_loop
+491C:0715800A: cmp.8 [rParam+0x15], 0x07
+4920:0018820B: jmp.ne -> clear_rparam
+4928:040C020D: add.32 [rParam+0xC] += [rParam+0x4]
+492C:0108800D: add.8 [rParam+0x8] += 0x01
+4930:0E08800A: cmp.8 [rParam+0x8], 0x0E
+4934:0018820B: jmp.ne -> mystery_1_outer_loop
+493C:00008209: mov.32 [rParam] = 0x00000001
+4944:00000020: ret
+
+clear_rparam:
+4948:00000210: xor.32 [rParam] ^= [rParam]
+494C:00000020: ret
+
+on_enter_pressed:
+4950:0000821F: call -> [0x0] verify_flag
+4958:0000820A: cmp.32 [rParam], 0x00000000
+4960:0004820B: jmp.eq -> set_status_wrong_flag
+set_status_right_flag:
+4968:00008209: mov.32 [rParam] = global_status_1
+4970:0000FA09: mov.32 [[rParam]] = 0x00000002
+4978:00008209: mov.32 [rParam] = global_status_2
+4980:0000FA09: mov.32 [[rParam]] = 0x00000002
+4988:00000020: ret
+
+set_status_wrong_flag:
+498C:00008209: mov.32 [rParam] = global_status_1
+4994:0000FA09: mov.32 [[rParam]] = 0x0000000C
+499C:00008209: mov.32 [rParam] = global_status_2
+49A4:0000FA09: mov.32 [[rParam]] = 0x00000001
+49AC:00000020: ret
+
+set_status_text_changed:
+49B0:00008209: mov.32 [rParam] = global_status_1
+49B8:0000FA09: mov.32 [[rParam]] = 0x0000000F
+49C0:00008209: mov.32 [rParam] = global_status_2
+49C8:0000FA09: mov.32 [[rParam]] = 0x00000020
+49D0:00000020: ret
+
+49D4:00000210: xor.32 [rParam] ^= [rParam]
+check_key_press_or_char_typed:
+49D8:00047209: mov.32 [rParam+0x4] = [[rParam]]
+49DC:00048211: and.32 [rParam+0x4] &= 0x00000050
+49E4:0004820A: cmp.32 [rParam+0x4], 0x00000000
+49EC:0018820B: jmp.ne -> on_key_press_or_char_typed
+49F4:01008002: wait 0x01
+entrypoint:
+49F8:0000820B: jmp.al -> check_key_press_or_char_typed
+
+on_key_press_or_char_typed:
+4A00:00007A09: mov.32 [[rParam]] = [rParam]
+4A04:04080209: mov.32 [rParam+0x8] = [rParam+0x4]
+4A08:00088211: and.32 [rParam+0x8] &= 0x00000010
+4A10:0008820A: cmp.32 [rParam+0x8], 0x00000000
+4A18:0004820B: jmp.eq -> check_if_char_was_typed
+4A20:00008209: mov.32 [rParam] = 0x0000000C
+4A28:00007209: mov.32 [rParam] = [[rParam]]
+4A2C:0000820A: cmp.32 [rParam], 0x00000008
+4A34:0004820B: jmp.eq -> remove_char_from_box
+4A3C:0000820A: cmp.32 [rParam], 0x0000000D
+4A44:0004820B: jmp.eq -> on_enter_pressed
+check_if_char_was_typed:
+4A4C:00048211: and.32 [rParam+0x4] &= 0x00000040
+4A54:0004820A: cmp.32 [rParam+0x4], 0x00000000
+4A5C:0018820B: jmp.ne -> append_entered_char_to_box
+4A64:00000020: ret
+
+remove_char_from_box:
+4A68:00008209: mov.32 [rParam] = global_input_length
+4A70:0000FA0A: cmp.32 [[rParam]], 0x00000000
+4A78:0004820B: jmp.eq -> ret_gadget
+4A80:0000FA0E: sub.32 [[rParam]] -= 0x00000001
+4A88:00048209: mov.32 [rParam+0x4] = global_input_text
+4A90:0004720D: add.32 [rParam+0x4] += [[rParam]]
+4A94:0004F809: mov.8 [[rParam+0x4]] = 0x00
+4A98:0000821F: call -> [0x0] set_status_text_changed
+4AA0:00000020: ret
+
+append_entered_char_to_box:
+4AA4:00008209: mov.32 [rParam] = input_char_typed
+4AAC:00007209: mov.32 [rParam] = [[rParam]]
+4AB0:0000820A: cmp.32 [rParam], 0x00000021
+4AB8:001C820B: jmp.le -> ret_gadget
+4AC0:0000820A: cmp.32 [rParam], 0x0000007E
+4AC8:0024820B: jmp.ge -> ret_gadget
+4AD0:00048209: mov.32 [rParam+0x4] = global_input_length
+4AD8:0004FA0A: cmp.32 [[rParam+0x4]], 0x00000016
+4AE0:0028820B: jmp.gt -> ret_gadget
+4AE8:00088209: mov.32 [rParam+0x8] = global_input_text
+4AF0:0408720D: add.32 [rParam+0x8] += [[rParam+0x4]]
+4AF4:00087809: mov.8 [[rParam+0x8]] = [rParam]
+4AF8:0004FA0D: add.32 [[rParam+0x4]] += 0x00000001
+4B00:0000821F: call -> [0x0] set_status_text_changed
+4B08:00000020: ret
+
+4B0C:00008209: mov.32 [rParam] = global_input_length
+4B14:00007209: mov.32 [rParam] = [[rParam]]
+4B18:0000820A: cmp.32 [rParam], 0x00000016
+4B20:0004820B: jmp.eq -> 0x00004B58
+4B28:00048209: mov.32 [rParam+0x4] = 0x00000040
+4B30:04087209: mov.32 [rParam+0x8] = [[rParam+0x4]]
+4B34:00088212: or.32 [rParam+0x8] |= 0x08000000
+4B3C:08047A09: mov.32 [[rParam+0x4]] = [rParam+0x8]
+4B40:00048209: mov.32 [rParam+0x4] = 0x00000044
+4B48:0000820D: add.32 [rParam] += 0x0000001D
+4B50:00047909: mov.16 [[rParam+0x4]] = [rParam]
+4B54:00000020: ret
+
+4B58:00008209: mov.32 [rParam] = 0x00000040
+4B60:00047209: mov.32 [rParam+0x4] = [[rParam]]
+4B64:00048211: and.32 [rParam+0x4] &= 0xF7FFFFFF
+4B6C:04007A09: mov.32 [[rParam]] = [rParam+0x4]
+4B70:00000020: ret
+
+4B74:0000821F: call -> [0x0] 0x00004658
+4B7C:0000821F: call -> [0x0] 0x000044A4
+4B84:0000821F: call -> [0x0] 0x00004B0C
+4B8C:0000821F: call -> [0x0] 0x000044FC
+4B94:0000821F: call -> [0x0] 0x000049D4
+4B9C:0000820B: jmp.al -> 0x00004B84
+
+global_status_1:
+4BA4:00000000: halt
+global_status_2:
+4BA8:00000000: halt
+global_input_length:
+4BAC:00000000: halt
+global_input_text:
+4BB0:00000000: halt
+4BB4:00000000: halt
+4BB8:00000000: halt
+4BBC:00000000: halt
+4BC0:00000000: halt
+4BC4:00000000: halt
+step_1_result:
+4BC8:00000000: halt
+4BCC:00000000: halt
+4BD0:00000000: halt
+4BD4:00000000: halt
+4BD8:00000000: halt
+4BDC:00000000: halt
+4BE0:67616C46: invalid opcode 70
+4BE4:65686320: ret
+
+4BE8:72656B63: invalid opcode 99
+4BEC:0000003A: invalid opcode 58
+4BF0:C4C4C4DA: invalid opcode 218
+4BF4:C4C4C4C4: invalid opcode 196
+4BF8:C4C4C4C4: invalid opcode 196
+4BFC:C4C4C4C4: invalid opcode 196
+4C00:C4C4C4C4: invalid opcode 196
+4C04:BFC4C4C4: invalid opcode 196
+4C08:00000000: halt
+4C0C:C4C4C4C0: invalid opcode 192
+4C10:C4C4C4C4: invalid opcode 196
+4C14:C4C4C4C4: invalid opcode 196
+4C18:C4C4C4C4: invalid opcode 196
+4C1C:C4C4C4C4: invalid opcode 196
+4C20:D9C4C4C4: invalid opcode 196
+4C24:00000000: halt
+4C28:73657250: invalid opcode 80
+4C2C:6E652073: invalid opcode 115
+4C30:20726574: invalid opcode 116
+4C34:76206F74: invalid opcode 116
+4C38:66697265: invalid opcode 101
+4C3C:00002E79: invalid opcode 121
+static_bit_map_processing_data:
+4C40:9AAA6AAA: invalid opcode 170
+4C44:AAA8969A: invalid opcode 154
+4C48:AAA62AAA: invalid opcode 170
+4C4C:88AA6A0A: cmp.32 [rCall+[rParam+0xAA]], [rParam+0x88]
+4C50:A8A82A9A: invalid opcode 154
+4C54:2AAAAAAA: invalid opcode 170
+4C58:AAA6A688: invalid opcode 136
+4C5C:A8AA6866: invalid opcode 102
+4C60:6AA6AA8A: invalid opcode 138
+4C64:28A8AAAA: invalid opcode 170
+4C68:A9A6AAAA: invalid opcode 170
+4C6C:AA288AA2: invalid opcode 162
+4C70:00000012: or.8 [rParam] |= [rParam]
+computational_memory_start:
+4C74:00000000: halt
+4C78:00000000: halt
+4C7C:00000000: halt
+4C80:00000000: halt
+4C84:00000000: halt
+4C88:00000000: halt
+4C8C:00000000: halt
+4C90:00000000: halt
+4C94:00000000: halt
+4C98:00000000: halt
+4C9C:00000000: halt
+4CA0:00000000: halt
+4CA4:00000000: halt
+4CA8:00000000: halt
+4CAC:00000000: halt
+4CB0:00000000: halt
+4CB4:00000000: halt
+4CB8:00000000: halt
+4CBC:00000000: halt
+4CC0:00000000: halt
+4CC4:00000000: halt
+4CC8:00000000: halt
+4CCC:00000000: halt
+4CD0:00000000: halt
+4CD4:00000000: halt
+4CD8:00000000: halt
+4CDC:00000000: halt
+4CE0:00000000: halt
+4CE4:00000000: halt
+4CE8:00000000: halt
+4CEC:00000000: halt
+4CF0:00000000: halt
+4CF4:00000000: halt
+4CF8:00000000: halt
+4CFC:00000000: halt
+4D00:00000000: halt
+4D04:00000000: halt
+4D08:00000000: halt
+4D0C:00000000: halt
+4D10:00000000: halt
+4D14:00000000: halt
+4D18:00000000: halt
+4D1C:00000000: halt
+4D20:00000000: halt
+4D24:00000000: halt
+4D28:00000000: halt
+4D2C:00000000: halt
+4D30:00000000: halt
+4D34:00000000: halt
+computational_memory_end:
+4D38:00000000: halt
+4D3C:00000000: halt
+4D40:00000000: halt
+4D44:00000000: halt
+4D48:00000000: halt
+4D4C:00000000: halt
+4D50:00000000: halt

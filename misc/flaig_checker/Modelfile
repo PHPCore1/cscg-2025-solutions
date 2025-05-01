@@ -1,0 +1,12 @@
+
+FROM ./flaig_checker.gguf
+TEMPLATE """{{ if .System }}<|system|>
+{{ .System }}</s>
+{{ end }}{{ if .Prompt }}<|user|>
+{{ .Prompt }}</s>
+{{ end }}<|assistant|>
+{{ .Response }}</s>
+"""
+PARAMETER stop "</s>"
+PARAMETER temperature 1.5
+PARAMETER min_p 0.1

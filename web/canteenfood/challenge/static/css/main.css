@@ -1,0 +1,67 @@
+body  {
+  font-family: 'Press Start 2P', cursive;
+  min-width: 260px;
+  color: #000000;
+  text-align: center;
+  background-color: #006400;
+}
+
+.btn-block {
+  width: 93%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.form-group {
+  margin-top: 55px !important;
+}
+
+#main {
+  margin: 30px auto;
+  padding: 15px;
+  border: 0px solid;
+  border-radius: 5px;
+  background: #556b2f;
+}
+
+#title {
+  display: inline-flex;
+}
+
+#title i {
+  color: #D34156;
+  font-size: 50px;
+  margin: 0px 40px;
+}
+#time {
+  color: #ff0a94;
+}
+
+h2 {
+  color: #000000;
+}
+
+img {
+  width: 550px;
+  margin-top: 1.4% !important;
+  height: 560px;
+  padding: 20px;
+  max-width: 100%;
+  display: block;
+  height: auto;
+  margin: auto;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+img:hover {
+  animation: dance 1.6s;
+  animation-iteration-count: infinite;
+}
+
+.pulse{
+  animation: pound 0.84s infinite alternate;
+  -webkit-animation: pound 0.84s infinite alternate;
+}
